@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'questions.dart';
 import 'brain.dart';
@@ -43,7 +41,6 @@ class _QuizPageState extends State<QuizPage> {
   List<bool> answers = [false, true, false, true, true];
   Question q1 = Question(q: "Anuj is a god tier programmer", a: false);*/
 
-  int questionNumber = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -56,7 +53,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                brain.questionBank[questionNumber].questionText,
+                brain.questionBankAccess(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -81,16 +78,15 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                bool correctans =
-                    brain.questionBank[questionNumber].questionAnswer;
-                if (correctans == true) {
+                bool correctAns = brain.questionBankAccess2();
+                if (correctAns == true) {
                   print('right');
                 } else {
                   print('wrong');
                 }
 
                 setState(() {
-                  questionNumber = questionNumber + 1;
+                  brain.nextQuestion();
                 });
               },
             ),
@@ -111,15 +107,15 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                bool correctans =
-                    brain.questionBank[questionNumber].questionAnswer;
-                if (correctans == false) {
-                  print('right');
+                bool correctAns = brain.questionBankAccess2();
+
+                if (correctAns == false) {
+                  print('righttt');
                 } else {
                   print('wrong');
                 }
                 setState(() {
-                  questionNumber = questionNumber + 1;
+                  brain.nextQuestion();
                 });
               },
             ),

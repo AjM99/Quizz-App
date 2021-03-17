@@ -1,7 +1,9 @@
 import 'questions.dart';
 import 'main.dart';
 
+// this is for Abstraction
 class Brain {
+  int _questionNumber = 0;
   List<Question> _questionBank = [
     Question(q: "Anuj is a god tier programmer", a: false),
     Question(q: "Life is sad", a: true),
@@ -14,4 +16,21 @@ class Brain {
         q: "Click true u will get point..or may be u wont??!!DO u trust me?? ",
         a: true),
   ];
+
+  void nextQuestion() {
+    if (_questionNumber < _questionBank.length - 1) {
+      _questionNumber = _questionNumber + 1;
+   
+    print(_questionNumber);
+    print(_questionBank.length);
+  }
+
+  // this is for encapsulation
+  String questionBankAccess() {
+    return _questionBank[_questionNumber].questionText;
+  }
+
+  bool questionBankAccess2() {
+    return _questionBank[_questionNumber].questionAnswer;
+  }
 }
