@@ -9,7 +9,7 @@ class Brain {
     Question(q: "Life is sad", a: true),
     Question(q: "U can change your fate", a: false),
     Question(q: "Isekai is real", a: true),
-    Question(q: "One piece is best anime/Tv series of all time", a: true),
+    Question(q: "One piece is best anime/   Tv series of all time", a: true),
     Question(q: "Am  I lazy?!!", a: true),
     Question(q: "lazy people are smartworkers", a: true),
     Question(
