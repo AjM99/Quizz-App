@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'questions.dart';
 import 'brain.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 Brain brain = Brain();
 
@@ -37,9 +38,21 @@ class _QuizPageState extends State<QuizPage> {
     "Isekai is real",
     "One piece is best anime/Tv series of all time",
   ];
-
   List<bool> answers = [false, true, false, true, true];
   Question q1 = Question(q: "Anuj is a god tier programmer", a: false);*/
+  void endgame() {
+    setState(() {
+      if (brain.End() == true) {
+        Alert(
+          context: context,
+          title: 'Finished!',
+          desc: "You have reached the end of the quiz.Press cancel to reset",
+        ).show();
+        brain.reset();
+        score = [];
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,10 +92,19 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 bool correctAns = brain.questionBankAccess2();
+                endgame();
                 if (correctAns == true) {
                   print('right');
+                  score.add(Icon(
+                    Icons.check_circle,
+                    color: Colors.green,
+                  ));
                 } else {
                   print('wrong');
+                  score.add(Icon(
+                    Icons.close_outlined,
+                    color: Colors.red,
+                  ));
                 }
 
                 setState(() {
@@ -108,11 +130,19 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 bool correctAns = brain.questionBankAccess2();
-
+                endgame();
                 if (correctAns == false) {
-                  print('righttt');
+                  print('rightt');
+                  score.add(Icon(
+                    Icons.check_circle,
+                    color: Colors.green,
+                  ));
                 } else {
                   print('wrong');
+                  score.add(Icon(
+                    Icons.close_outlined,
+                    color: Colors.red,
+                  ));
                 }
                 setState(() {
                   brain.nextQuestion();

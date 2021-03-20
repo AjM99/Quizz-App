@@ -15,12 +15,13 @@ class Brain {
     Question(
         q: "Click true u will get point..or may be u wont??!!DO u trust me?? ",
         a: true),
+    Question(q: "lol, u shouldn't have trust me,now press false ", a: true),
   ];
 
   void nextQuestion() {
     if (_questionNumber < _questionBank.length - 1) {
       _questionNumber = _questionNumber + 1;
-   
+    }
     print(_questionNumber);
     print(_questionBank.length);
   }
@@ -32,5 +33,16 @@ class Brain {
 
   bool questionBankAccess2() {
     return _questionBank[_questionNumber].questionAnswer;
+  }
+
+  bool End() {
+    if (_questionNumber == _questionBank.length - 1)
+      return true;
+    else
+      return false;
+  }
+
+  void reset() {
+    _questionNumber = 0;
   }
 }
