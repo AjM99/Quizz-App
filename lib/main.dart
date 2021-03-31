@@ -94,7 +94,7 @@ class _QuizPageState extends State<QuizPage> {
                 bool correctAns = brain.questionBankAccess2();
                 endgame();
                 if (correctAns == true) {
-                  print('right');
+                  print('rightt');
                   score.add(Icon(
                     Icons.check_circle,
                     color: Colors.green,
